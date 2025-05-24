@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		EBD9E03D2DE16E08008F66D0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EBD9E0242DE16E06008F66D0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EBD9E02B2DE16E06008F66D0;
+			remoteInfo = "facetracking-and-overlay";
+		};
+		EBD9E0472DE16E08008F66D0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EBD9E0242DE16E06008F66D0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EBD9E02B2DE16E06008F66D0;
+			remoteInfo = "facetracking-and-overlay";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EBD9E02C2DE16E06008F66D0 /* facetracking-and-overlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "facetracking-and-overlay.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBD9E03C2DE16E08008F66D0 /* facetracking-and-overlayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "facetracking-and-overlayTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBD9E0462DE16E08008F66D0 /* facetracking-and-overlayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "facetracking-and-overlayUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		EBD9E02E2DE16E06008F66D0 /* facetracking-and-overlay */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "facetracking-and-overlay";
+			sourceTree = "<group>";
+		};
+		EBD9E03F2DE16E08008F66D0 /* facetracking-and-overlayTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "facetracking-and-overlayTests";
+			sourceTree = "<group>";
+		};
+		EBD9E0492DE16E08008F66D0 /* facetracking-and-overlayUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "facetracking-and-overlayUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EBD9E0292DE16E06008F66D0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBD9E0392DE16E08008F66D0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBD9E0432DE16E08008F66D0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EBD9E0232DE16E06008F66D0 = {
+			isa = PBXGroup;
+			children = (
+				EBD9E02E2DE16E06008F66D0 /* facetracking-and-overlay */,
+				EBD9E03F2DE16E08008F66D0 /* facetracking-and-overlayTests */,
+				EBD9E0492DE16E08008F66D0 /* facetracking-and-overlayUITests */,
+				EBD9E02D2DE16E06008F66D0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EBD9E02D2DE16E06008F66D0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EBD9E02C2DE16E06008F66D0 /* facetracking-and-overlay.app */,
+				EBD9E03C2DE16E08008F66D0 /* facetracking-and-overlayTests.xctest */,
+				EBD9E0462DE16E08008F66D0 /* facetracking-and-overlayUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EBD9E02B2DE16E06008F66D0 /* facetracking-and-overlay */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EBD9E0502DE16E08008F66D0 /* Build configuration list for PBXNativeTarget "facetracking-and-overlay" */;
+			buildPhases = (
+				EBD9E0282DE16E06008F66D0 /* Sources */,
+				EBD9E0292DE16E06008F66D0 /* Frameworks */,
+				EBD9E02A2DE16E06008F66D0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				EBD9E02E2DE16E06008F66D0 /* facetracking-and-overlay */,
+			);
+			name = "facetracking-and-overlay";
+			packageProductDependencies = (
+			);
+			productName = "facetracking-and-overlay";
+			productReference = EBD9E02C2DE16E06008F66D0 /* facetracking-and-overlay.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EBD9E03B2DE16E08008F66D0 /* facetracking-and-overlayTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EBD9E0532DE16E08008F66D0 /* Build configuration list for PBXNativeTarget "facetracking-and-overlayTests" */;
+			buildPhases = (
+				EBD9E0382DE16E08008F66D0 /* Sources */,
+				EBD9E0392DE16E08008F66D0 /* Frameworks */,
+				EBD9E03A2DE16E08008F66D0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EBD9E03E2DE16E08008F66D0 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				EBD9E03F2DE16E08008F66D0 /* facetracking-and-overlayTests */,
+			);
+			name = "facetracking-and-overlayTests";
+			packageProductDependencies = (
+			);
+			productName = "facetracking-and-overlayTests";
+			productReference = EBD9E03C2DE16E08008F66D0 /* facetracking-and-overlayTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EBD9E0452DE16E08008F66D0 /* facetracking-and-overlayUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EBD9E0562DE16E08008F66D0 /* Build configuration list for PBXNativeTarget "facetracking-and-overlayUITests" */;
+			buildPhases = (
+				EBD9E0422DE16E08008F66D0 /* Sources */,
+				EBD9E0432DE16E08008F66D0 /* Frameworks */,
+				EBD9E0442DE16E08008F66D0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EBD9E0482DE16E08008F66D0 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				EBD9E0492DE16E08008F66D0 /* facetracking-and-overlayUITests */,
+			);
+			name = "facetracking-and-overlayUITests";
+			packageProductDependencies = (
+			);
+			productName = "facetracking-and-overlayUITests";
+			productReference = EBD9E0462DE16E08008F66D0 /* facetracking-and-overlayUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EBD9E0242DE16E06008F66D0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					EBD9E02B2DE16E06008F66D0 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					EBD9E03B2DE16E08008F66D0 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = EBD9E02B2DE16E06008F66D0;
+					};
+					EBD9E0452DE16E08008F66D0 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = EBD9E02B2DE16E06008F66D0;
+					};
+				};
+			};
+			buildConfigurationList = EBD9E0272DE16E06008F66D0 /* Build configuration list for PBXProject "facetracking-and-overlay" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EBD9E0232DE16E06008F66D0;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = EBD9E02D2DE16E06008F66D0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EBD9E02B2DE16E06008F66D0 /* facetracking-and-overlay */,
+				EBD9E03B2DE16E08008F66D0 /* facetracking-and-overlayTests */,
+				EBD9E0452DE16E08008F66D0 /* facetracking-and-overlayUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EBD9E02A2DE16E06008F66D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBD9E03A2DE16E08008F66D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBD9E0442DE16E08008F66D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EBD9E0282DE16E06008F66D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBD9E0382DE16E08008F66D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBD9E0422DE16E08008F66D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EBD9E03E2DE16E08008F66D0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EBD9E02B2DE16E06008F66D0 /* facetracking-and-overlay */;
+			targetProxy = EBD9E03D2DE16E08008F66D0 /* PBXContainerItemProxy */;
+		};
+		EBD9E0482DE16E08008F66D0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EBD9E02B2DE16E06008F66D0 /* facetracking-and-overlay */;
+			targetProxy = EBD9E0472DE16E08008F66D0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		EBD9E04E2DE16E08008F66D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EBD9E04F2DE16E08008F66D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EBD9E0512DE16E08008F66D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"facetracking-and-overlay/Preview Content\"";
+				DEVELOPMENT_TEAM = 8V93G3Y2W5;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.kanakanho.facetracking-and-overlay";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EBD9E0522DE16E08008F66D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"facetracking-and-overlay/Preview Content\"";
+				DEVELOPMENT_TEAM = 8V93G3Y2W5;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.kanakanho.facetracking-and-overlay";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EBD9E0542DE16E08008F66D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8V93G3Y2W5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.kanakanho.facetracking-and-overlayTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/facetracking-and-overlay.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/facetracking-and-overlay";
+			};
+			name = Debug;
+		};
+		EBD9E0552DE16E08008F66D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8V93G3Y2W5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.kanakanho.facetracking-and-overlayTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/facetracking-and-overlay.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/facetracking-and-overlay";
+			};
+			name = Release;
+		};
+		EBD9E0572DE16E08008F66D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8V93G3Y2W5;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.kanakanho.facetracking-and-overlayUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "facetracking-and-overlay";
+			};
+			name = Debug;
+		};
+		EBD9E0582DE16E08008F66D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8V93G3Y2W5;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.kanakanho.facetracking-and-overlayUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "facetracking-and-overlay";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EBD9E0272DE16E06008F66D0 /* Build configuration list for PBXProject "facetracking-and-overlay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBD9E04E2DE16E08008F66D0 /* Debug */,
+				EBD9E04F2DE16E08008F66D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EBD9E0502DE16E08008F66D0 /* Build configuration list for PBXNativeTarget "facetracking-and-overlay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBD9E0512DE16E08008F66D0 /* Debug */,
+				EBD9E0522DE16E08008F66D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EBD9E0532DE16E08008F66D0 /* Build configuration list for PBXNativeTarget "facetracking-and-overlayTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBD9E0542DE16E08008F66D0 /* Debug */,
+				EBD9E0552DE16E08008F66D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EBD9E0562DE16E08008F66D0 /* Build configuration list for PBXNativeTarget "facetracking-and-overlayUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBD9E0572DE16E08008F66D0 /* Debug */,
+				EBD9E0582DE16E08008F66D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EBD9E0242DE16E06008F66D0 /* Project object */;
+}
