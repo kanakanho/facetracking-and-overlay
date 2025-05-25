@@ -8,14 +8,39 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var externalFileStorage = ExternalFileStorage<ExternalBlendShapes>()
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            FaceTrackingView(externalFileStorage: externalFileStorage)
+                .edgesIgnoringSafeArea(.all)
+            
+            HStack {
+                Button(action: {
+                    externalFileStorage.toggleRecording()
+                }) {
+                    IsRecordingButtonView(externalFileStorage.isRecording)
+                }
+            }
         }
-        .padding()
+    }
+}
+
+struct IsRecordingButtonView: View {
+    let isRecording: Bool
+    
+    init(_ isRecording: Bool) {
+        self.isRecording = isRecording
+    }
+    
+    var body: some View {
+        HStack {
+            Image(systemName: isRecording ? "stop.fill" : "play.fill")
+                .foregroundColor(isRecording ? .red : .green)
+            Text(isRecording ? "Stop" : "Start")
+                .font(.title)
+                .foregroundColor(isRecording ? .red : .green)
+        }
     }
 }
 
