@@ -10,17 +10,29 @@ import ARKit
 import SceneKit
 
 struct FaceTrackingView: UIViewRepresentable {
-    @ObservedObject var externalFileStorage = ExternalFileStorage<ExternalBlendShapes>()
+    let externalFileStorage:  ExternalFileStorage<ExternalBlendShapes>
+    var virtualContentType: VirtualContentType
+    var coordinators: [VirtualContentType: Coordinator]
     
-    let arKitSceneView = ARSCNView()
-
+    init(virtualContentType: VirtualContentType ,externalFileStorage: ExternalFileStorage<ExternalBlendShapes>) {
+        self.virtualContentType = virtualContentType
+        self.externalFileStorage = externalFileStorage
+        self.coordinators = [:]
+        self.coordinators[.none] = NoneContentCoordinator(self)
+        self.coordinators[.blendShape] = BlendShapeCoordinator(self, externalFileStorage: externalFileStorage)
+    }
+    
+    func makeCoordinator() -> Coordinator {
+        return coordinators[virtualContentType]!
+    }
+    
     func makeUIView(context: Context) -> ARSCNView {
+        let arKitSceneView = ARSCNView()
         arKitSceneView.delegate = context.coordinator
         arKitSceneView.session.delegate = context.coordinator
         arKitSceneView.automaticallyUpdatesLighting = true
         arKitSceneView.scene = SCNScene()
         
-        // ARFaceTrackingConfigurationでセッション開始
         if ARFaceTrackingConfiguration.isSupported {
             let configuration = ARFaceTrackingConfiguration()
             if #available(iOS 13.0, *) {
@@ -30,21 +42,56 @@ struct FaceTrackingView: UIViewRepresentable {
             arKitSceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
         }
         
-        print("finish make makeUIView")
         return arKitSceneView
     }
     
     func updateUIView(_ uiView: ARSCNView, context: Context) {
-        print("updateUIView")
-    }
-    
-    func makeCoordinator() -> Coordinator {
-        print("makeCoordinator")
-        return Coordinator(self, externalFileStorage: externalFileStorage)
+        // coordinator のアップデート
     }
 }
 
-class Coordinator: NSObject, ARSCNViewDelegate, ARSessionDelegate {
+class NoneContentCoordinator: NSObject, Coordinator {
+    var parent: FaceTrackingView
+    var noneContent: NoneContent
+    
+    init(_ parent: FaceTrackingView) {
+        self.parent = parent
+        self.noneContent = NoneContent()
+    }
+    
+    func session(_ session: ARSession, didFailWithError error: Error) {
+        // エラー処理（必要に応じてアラート表示などを追加）
+        print(error.localizedDescription)
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        guard let faceAnchor = anchor as? ARFaceAnchor else { return }
+        guard let contentNode = noneContent.renderer(renderer, nodeFor: faceAnchor) else {
+            print("contentNode")
+            return
+        }
+        node.addChildNode(contentNode)
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        var contentNode = noneContent.contentNode
+        if contentNode == nil {
+            print("contentNode is nil")
+            contentNode = node.childNodes.first
+            noneContent.contentNode = contentNode
+        }
+        guard let validContentNode = contentNode else {
+            print("contentNode is still nil after checking")
+            return
+        }
+        noneContent.renderer(renderer, didUpdate: validContentNode, for: anchor)
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
+    }
+}
+
+class BlendShapeCoordinator: NSObject, Coordinator {
     var parent: FaceTrackingView
     var blendShapeCharacter: BlendShapeCharacter
     
@@ -84,3 +131,72 @@ class Coordinator: NSObject, ARSCNViewDelegate, ARSessionDelegate {
     func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
     }
 }
+
+protocol Coordinator: NSObject, ARSCNViewDelegate, ARSessionDelegate {
+    var parent: FaceTrackingView { get }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor)
+    
+    func session(_ session: ARSession, didFailWithError error: Error)
+    
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor)
+    
+    func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor)
+}
+
+//class Coordinator: NSObject, ARSCNViewDelegate, ARSessionDelegate {
+//    var parent: FaceTrackingView
+//    var virtualContentType: VirtualContentType
+//    var virtualContents: [VirtualContentType: VirtualContentController]
+//    weak var arView: ARSCNView?
+//
+//    init(_ parent: FaceTrackingView, virtualContentType: VirtualContentType, externalFileStorage: ExternalFileStorage<ExternalBlendShapes>) {
+//        self.parent = parent
+//        self.virtualContentType = virtualContentType
+//        self.virtualContents = [
+//            .none: NoneContent(),
+//            .blendShape: BlendShapeCharacter(externalFileStorage: externalFileStorage)
+//        ]
+//    }
+//
+////    func updateVirtualContentType(virtualContentType: VirtualContentType) {
+////        guard self.virtualContentType != virtualContentType else { return }
+////        self.virtualContentType = virtualContentType
+////
+////        // ここでノード削除
+////        DispatchQueue.main.async {
+////            self.arView?.scene.rootNode.childNodes.forEach { $0.removeFromParentNode() }
+////        }
+////    }
+//
+//    func session(_ session: ARSession, didFailWithError error: Error) {
+//        print("ARSession Error:", error.localizedDescription)
+//    }
+//
+//    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+//        guard let faceAnchor = anchor as? ARFaceAnchor else { return }
+//        guard let contentNode = virtualContents[virtualContentType]?.renderer(renderer, nodeFor: faceAnchor) else { return }
+//        node.addChildNode(contentNode)
+//    }
+//
+//    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+//        guard let controller = virtualContents[virtualContentType] else { return }
+//        var contentNode = controller.contentNode
+//
+//        if contentNode == nil {
+//            contentNode = node.childNodes.first
+//            controller.contentNode = contentNode
+//        }
+//
+//        guard let validNode = contentNode else {
+//            print("contentNode is nil")
+//            return
+//        }
+//
+//        controller.renderer(renderer, didUpdate: validNode, for: anchor)
+//    }
+//
+//    func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
+//        // Optional: Clean up resources or reset state
+//    }
+//}

@@ -60,9 +60,14 @@ class ExternalFileStorage<T: Encodable> : ObservableObject {
             startUnixTime = Date()
             fileURL = documentDirectory.appendingPathComponent("\(startUnixTime.formattedDate()).json")
             externalData = []
-       } else {
-           writeFile()
-       }
+        } else {
+            writeFile()
+        }
+    }
+    
+    func endRecording() {
+        isRecording = false
+        writeFile()
     }
     
     func addData(data: T) {

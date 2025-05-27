@@ -17,6 +17,30 @@
 import ARKit
 import SceneKit
 
+enum VirtualContentType: Int, CaseIterable, Identifiable {
+    case none, blendShape
+    
+    var id: Int { rawValue }
+    
+    var displayName: String {
+        switch self {
+        case .none:
+            return "None"
+        case .blendShape:
+            return "Blend Shape"
+        }
+    }
+    
+    func makeController() -> VirtualContentController {
+        switch self {
+        case .none:
+            return NoneContent()
+        case .blendShape:
+            return BlendShapeCharacter(externalFileStorage: ExternalFileStorage<ExternalBlendShapes>())
+        }
+    }
+}
+
 /// For forwarding `ARSCNViewDelegate` messages to the object controlling the currently visible virtual content.
 protocol VirtualContentController: ARSCNViewDelegate {
     /// The root node for the virtual content.
