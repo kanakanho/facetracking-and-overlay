@@ -15,10 +15,10 @@ import SwiftUI
 
 /// - Tag: BlendShapeCharacter
 class BlendShapeCharacter: NSObject, VirtualContentController {
-    @ObservedObject var externalFileStorage: ExternalFileStorage<ExternalBlendShapes>
+    @ObservedObject var externalBlendShapes: ExternalFileStorage<ExternalBlendShapes>
     
-    init(externalFileStorage: ExternalFileStorage<ExternalBlendShapes>) {
-        self.externalFileStorage = externalFileStorage
+    init(externalBlendShapes: ExternalFileStorage<ExternalBlendShapes>) {
+        self.externalBlendShapes = externalBlendShapes
         super.init()
     }
     
@@ -27,7 +27,7 @@ class BlendShapeCharacter: NSObject, VirtualContentController {
     private var jawNode: SCNNode?
     private var eyeLeftNode: SCNNode?
     private var eyeRightNode: SCNNode?
-
+    
     private var originalJawY: Float = 0
     private var jawHeight: Float = 0
     
@@ -38,11 +38,11 @@ class BlendShapeCharacter: NSObject, VirtualContentController {
         }
         
         let contentNode = SCNReferenceNode(named: "robotHead")
-
+        
         jawNode = contentNode.childNode(withName: "jaw", recursively: true)
         eyeLeftNode = contentNode.childNode(withName: "eyeLeft", recursively: true)
         eyeRightNode = contentNode.childNode(withName: "eyeRight", recursively: true)
-
+        
         if let jaw = jawNode {
             originalJawY = jaw.position.y
             let (min, max) = jaw.boundingBox
@@ -69,7 +69,7 @@ class BlendShapeCharacter: NSObject, VirtualContentController {
         let blendShapes = faceAnchor.blendShapes
         let timestamp = Date()
         let blendShapeData = ExternalBlendShapes(timestamp: timestamp, blendShapes: blendShapes)
-        externalFileStorage.addData(data: blendShapeData)
+        externalBlendShapes.addData(data: blendShapeData)
         guard let eyeBlinkLeft = blendShapes[.eyeBlinkLeft] as? Float,
               let eyeBlinkRight = blendShapes[.eyeBlinkRight] as? Float,
               let jawOpen = blendShapes[.jawOpen] as? Float
@@ -77,7 +77,7 @@ class BlendShapeCharacter: NSObject, VirtualContentController {
             print("Failed to get blend shapes")
             return
         }
-    
+        
         eyeLeftNode?.scale.z = 1 - eyeBlinkLeft
         eyeRightNode?.scale.z = 1 - eyeBlinkRight
         if let jaw = jawNode {

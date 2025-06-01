@@ -9,10 +9,12 @@ import SwiftUI
 
 @main
 struct facetracking_and_overlayApp: App {
-    @ObservedObject var externalFileStorage = ExternalFileStorage<ExternalBlendShapes>()
+    @ObservedObject var externalBlendShapes = ExternalFileStorage<ExternalBlendShapes>()
+    @ObservedObject var externalSentences = ExternalSentences()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView(externalFileStorage: externalFileStorage)
+            ContentView(externalBlendShapes: externalBlendShapes, externalSentences: externalSentences)
         }
     }
 }

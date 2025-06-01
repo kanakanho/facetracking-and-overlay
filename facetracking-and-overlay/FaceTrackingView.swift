@@ -10,16 +10,16 @@ import ARKit
 import SceneKit
 
 struct FaceTrackingView: UIViewRepresentable {
-    let externalFileStorage:  ExternalFileStorage<ExternalBlendShapes>
+    let externalBlendShapes:  ExternalFileStorage<ExternalBlendShapes>
     var virtualContentType: VirtualContentType
     var coordinators: [VirtualContentType: Coordinator]
     
-    init(virtualContentType: VirtualContentType ,externalFileStorage: ExternalFileStorage<ExternalBlendShapes>) {
+    init(virtualContentType: VirtualContentType ,externalBlendShapes: ExternalFileStorage<ExternalBlendShapes>) {
         self.virtualContentType = virtualContentType
-        self.externalFileStorage = externalFileStorage
+        self.externalBlendShapes = externalBlendShapes
         self.coordinators = [:]
         self.coordinators[.none] = NoneContentCoordinator(self)
-        self.coordinators[.blendShape] = BlendShapeCoordinator(self, externalFileStorage: externalFileStorage)
+        self.coordinators[.blendShape] = BlendShapeCoordinator(self, externalBlendShapes: externalBlendShapes)
     }
     
     func makeCoordinator() -> Coordinator {
@@ -95,9 +95,9 @@ class BlendShapeCoordinator: NSObject, Coordinator {
     var parent: FaceTrackingView
     var blendShapeCharacter: BlendShapeCharacter
     
-    init(_ parent: FaceTrackingView, externalFileStorage: ExternalFileStorage<ExternalBlendShapes>) {
+    init(_ parent: FaceTrackingView, externalBlendShapes: ExternalFileStorage<ExternalBlendShapes>) {
         self.parent = parent
-        self.blendShapeCharacter = BlendShapeCharacter(externalFileStorage: externalFileStorage)
+        self.blendShapeCharacter = BlendShapeCharacter(externalBlendShapes: externalBlendShapes)
     }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
@@ -143,60 +143,3 @@ protocol Coordinator: NSObject, ARSCNViewDelegate, ARSessionDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor)
 }
-
-//class Coordinator: NSObject, ARSCNViewDelegate, ARSessionDelegate {
-//    var parent: FaceTrackingView
-//    var virtualContentType: VirtualContentType
-//    var virtualContents: [VirtualContentType: VirtualContentController]
-//    weak var arView: ARSCNView?
-//
-//    init(_ parent: FaceTrackingView, virtualContentType: VirtualContentType, externalFileStorage: ExternalFileStorage<ExternalBlendShapes>) {
-//        self.parent = parent
-//        self.virtualContentType = virtualContentType
-//        self.virtualContents = [
-//            .none: NoneContent(),
-//            .blendShape: BlendShapeCharacter(externalFileStorage: externalFileStorage)
-//        ]
-//    }
-//
-////    func updateVirtualContentType(virtualContentType: VirtualContentType) {
-////        guard self.virtualContentType != virtualContentType else { return }
-////        self.virtualContentType = virtualContentType
-////
-////        // ここでノード削除
-////        DispatchQueue.main.async {
-////            self.arView?.scene.rootNode.childNodes.forEach { $0.removeFromParentNode() }
-////        }
-////    }
-//
-//    func session(_ session: ARSession, didFailWithError error: Error) {
-//        print("ARSession Error:", error.localizedDescription)
-//    }
-//
-//    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-//        guard let faceAnchor = anchor as? ARFaceAnchor else { return }
-//        guard let contentNode = virtualContents[virtualContentType]?.renderer(renderer, nodeFor: faceAnchor) else { return }
-//        node.addChildNode(contentNode)
-//    }
-//
-//    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-//        guard let controller = virtualContents[virtualContentType] else { return }
-//        var contentNode = controller.contentNode
-//
-//        if contentNode == nil {
-//            contentNode = node.childNodes.first
-//            controller.contentNode = contentNode
-//        }
-//
-//        guard let validNode = contentNode else {
-//            print("contentNode is nil")
-//            return
-//        }
-//
-//        controller.renderer(renderer, didUpdate: validNode, for: anchor)
-//    }
-//
-//    func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
-//        // Optional: Clean up resources or reset state
-//    }
-//}

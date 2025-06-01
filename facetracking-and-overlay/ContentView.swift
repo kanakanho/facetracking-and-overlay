@@ -7,57 +7,32 @@
 
 import SwiftUI
 
+public enum UserInterfaceSizeClass {
+    case compact
+    case regular
+}
+
 struct ContentView: View {
-    @ObservedObject var externalFileStorage = ExternalFileStorage<ExternalBlendShapes>()
+    @ObservedObject var externalBlendShapes = ExternalFileStorage<ExternalBlendShapes>()
+    @ObservedObject var externalSentences = ExternalSentences()
+    
     @Environment(\.scenePhase) var scenePhase
     @State var virtualContentType: VirtualContentType = .blendShape
     
+    @Environment(\.verticalSizeClass) private var verticalSizeClass
+    
     var body: some View {
         VStack {
-            Picker("Select Content Type", selection: $virtualContentType) {
-                ForEach(VirtualContentType.allCases) { type in
-                    Text(type.displayName).tag(type)
-                }
-            }
-            .pickerStyle(.segmented)
-                
-            FaceTrackingView(virtualContentType: virtualContentType, externalFileStorage: externalFileStorage)
-                .edgesIgnoringSafeArea(.all)
-                .onDisappear {
-                    externalFileStorage.endRecording()
-                }
-                .id(virtualContentType)
-            
-            Button(action: {
-                externalFileStorage.toggleRecording()
-            }) {
-                IsRecordingButtonView(externalFileStorage.isRecording)
-            }
-            .disabled(virtualContentType == .none)
-            .opacity(virtualContentType == .none ? 0.3 : 1.0)
+            MainView(externalBlendShapes: externalBlendShapes, virtualContentType: virtualContentType, externalSentences: externalSentences)
+            FooterButton(externalSentences: externalSentences)
         }
         .onChange(of: scenePhase) {
             if scenePhase == .background {
-                externalFileStorage.endRecording()
+                externalBlendShapes.endRecording()
+                externalSentences.endRecording()
+            } else if scenePhase == .active {
+                externalBlendShapes.toggleRecording()
             }
-        }
-    }
-}
-
-struct IsRecordingButtonView: View {
-    let isRecording: Bool
-    
-    init(_ isRecording: Bool) {
-        self.isRecording = isRecording
-    }
-    
-    var body: some View {
-        HStack {
-            Image(systemName: isRecording ? "stop.fill" : "play.fill")
-                .foregroundColor(isRecording ? .red : .green)
-            Text(isRecording ? "Stop" : "Start")
-                .font(.title)
-                .foregroundColor(isRecording ? .red : .green)
         }
     }
 }
