@@ -23,7 +23,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            MainView(externalBlendShapes: externalBlendShapes, virtualContentType: virtualContentType, externalSentences: externalSentences)
+            MainView(externalBlendShapes: externalBlendShapes, virtualContentType: $virtualContentType, externalSentences: externalSentences)
             FooterButton(externalSentences: externalSentences)
         }
         .onChange(of: scenePhase) {

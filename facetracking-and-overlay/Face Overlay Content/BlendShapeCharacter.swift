@@ -11,17 +11,9 @@
 import Foundation
 import SceneKit
 import ARKit
-import SwiftUI
 
 /// - Tag: BlendShapeCharacter
 class BlendShapeCharacter: NSObject, VirtualContentController {
-    @ObservedObject var externalBlendShapes: ExternalFileStorage<ExternalBlendShapes>
-    
-    init(externalBlendShapes: ExternalFileStorage<ExternalBlendShapes>) {
-        self.externalBlendShapes = externalBlendShapes
-        super.init()
-    }
-    
     var contentNode: SCNNode?
     
     private var jawNode: SCNNode?
@@ -67,9 +59,6 @@ class BlendShapeCharacter: NSObject, VirtualContentController {
         }
         
         let blendShapes = faceAnchor.blendShapes
-        let timestamp = Date()
-        let blendShapeData = ExternalBlendShapes(timestamp: timestamp, blendShapes: blendShapes)
-        externalBlendShapes.addData(data: blendShapeData)
         guard let eyeBlinkLeft = blendShapes[.eyeBlinkLeft] as? Float,
               let eyeBlinkRight = blendShapes[.eyeBlinkRight] as? Float,
               let jawOpen = blendShapes[.jawOpen] as? Float

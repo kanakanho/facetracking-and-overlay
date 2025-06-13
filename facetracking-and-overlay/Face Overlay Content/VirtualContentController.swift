@@ -36,7 +36,7 @@ enum VirtualContentType: Int, CaseIterable, Identifiable {
         case .none:
             return NoneContent()
         case .blendShape:
-            return BlendShapeCharacter(externalBlendShapes:  ExternalFileStorage<ExternalBlendShapes>())
+            return BlendShapeCharacter()
         }
     }
 }

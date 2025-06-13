@@ -10,7 +10,7 @@ import ARKit
 import SceneKit
 
 struct FaceTrackingView: UIViewRepresentable {
-    let externalBlendShapes:  ExternalFileStorage<ExternalBlendShapes>
+    @ObservedObject var externalBlendShapes:  ExternalFileStorage<ExternalBlendShapes>
     var virtualContentType: VirtualContentType
     var coordinators: [VirtualContentType: Coordinator]
     
@@ -18,7 +18,7 @@ struct FaceTrackingView: UIViewRepresentable {
         self.virtualContentType = virtualContentType
         self.externalBlendShapes = externalBlendShapes
         self.coordinators = [:]
-        self.coordinators[.none] = NoneContentCoordinator(self)
+        self.coordinators[.none] = NoneContentCoordinator(self, externalBlendShapes: externalBlendShapes)
         self.coordinators[.blendShape] = BlendShapeCoordinator(self, externalBlendShapes: externalBlendShapes)
     }
     
@@ -52,11 +52,12 @@ struct FaceTrackingView: UIViewRepresentable {
 
 class NoneContentCoordinator: NSObject, Coordinator {
     var parent: FaceTrackingView
-    var noneContent: NoneContent
+    var noneContent = NoneContent()
+    @ObservedObject var externalBlendShapes: ExternalFileStorage<ExternalBlendShapes>
     
-    init(_ parent: FaceTrackingView) {
+    init(_ parent: FaceTrackingView, externalBlendShapes: ExternalFileStorage<ExternalBlendShapes>) {
         self.parent = parent
-        self.noneContent = NoneContent()
+        self.externalBlendShapes = externalBlendShapes
     }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
@@ -65,26 +66,18 @@ class NoneContentCoordinator: NSObject, Coordinator {
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        guard let faceAnchor = anchor as? ARFaceAnchor else { return }
-        guard let contentNode = noneContent.renderer(renderer, nodeFor: faceAnchor) else {
-            print("contentNode")
-            return
-        }
-        node.addChildNode(contentNode)
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-        var contentNode = noneContent.contentNode
-        if contentNode == nil {
-            print("contentNode is nil")
-            contentNode = node.childNodes.first
-            noneContent.contentNode = contentNode
-        }
-        guard let validContentNode = contentNode else {
-            print("contentNode is still nil after checking")
+        guard let faceAnchor = anchor as? ARFaceAnchor else {
+            print("not ARFaceAnchor in didUpdate")
             return
         }
-        noneContent.renderer(renderer, didUpdate: validContentNode, for: anchor)
+        
+        let blendShapes = faceAnchor.blendShapes
+        let timestamp = Date()
+        let blendShapeData = ExternalBlendShapes(timestamp: timestamp, blendShapes: blendShapes)
+        externalBlendShapes.addData(data: blendShapeData)
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
@@ -93,11 +86,12 @@ class NoneContentCoordinator: NSObject, Coordinator {
 
 class BlendShapeCoordinator: NSObject, Coordinator {
     var parent: FaceTrackingView
-    var blendShapeCharacter: BlendShapeCharacter
+    var blendShapeCharacter = BlendShapeCharacter()
+    @ObservedObject var externalBlendShapes: ExternalFileStorage<ExternalBlendShapes>
     
     init(_ parent: FaceTrackingView, externalBlendShapes: ExternalFileStorage<ExternalBlendShapes>) {
         self.parent = parent
-        self.blendShapeCharacter = BlendShapeCharacter(externalBlendShapes: externalBlendShapes)
+        self.externalBlendShapes = externalBlendShapes
     }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
@@ -125,6 +119,16 @@ class BlendShapeCoordinator: NSObject, Coordinator {
             print("contentNode is still nil after checking")
             return
         }
+        guard let faceAnchor = anchor as? ARFaceAnchor else {
+            print("not ARFaceAnchor in didUpdate")
+            return
+        }
+        
+        let blendShapes = faceAnchor.blendShapes
+        let timestamp = Date()
+        let blendShapeData = ExternalBlendShapes(timestamp: timestamp, blendShapes: blendShapes)
+        externalBlendShapes.addData(data: blendShapeData)
+        
         blendShapeCharacter.renderer(renderer, didUpdate: validContentNode, for: anchor)
     }
     
